@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://chnj6kl5lcjan"]
+
+[ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_76d7x"]
+[ext_resource type="PackedScene" uid="uid://c5fks4vtbjwe2" path="res://Scenes/Player/Player.tscn" id="2_7qojo"]
+
+[sub_resource type="Environment" id="Environment_glh7c"]
+background_mode = 1
+background_color = Color(0.705882, 0.8, 0.835294, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.776471, 0.776471, 0.776471, 1)
+ssao_enabled = true
+ssao_intensity = 0.5
+ssao_power = 3.0
+ssao_detail = 5.0
+ssao_horizon = 0.0
+ssao_sharpness = 0.0
+ssil_radius = 1.92
+ssil_sharpness = 1.0
+sdfgi_use_occlusion = true
+sdfgi_cascades = 1
+sdfgi_max_distance = 25.6
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_76d7x")
+load_radius = 2
+
+[node name="Player" parent="." instance=ExtResource("2_7qojo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.18, 120, 8.627)
+JUMP_VELOCITY = 8
+
+[node name="Chunks" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_glh7c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.488423, 0.872607, 0, -0.872607, 0.488423, 0, 0, 0)
